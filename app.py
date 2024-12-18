@@ -8,7 +8,7 @@ import database
 
 # Initialize Flask app and enable CORS
 app = Flask(__name__)
-CORS(app)
+CORS(app) 
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
