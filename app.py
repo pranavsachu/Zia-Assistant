@@ -8,7 +8,7 @@ import database
 
 # Initialize Flask app and enable CORS
 app = Flask(__name__)
-CORS(app) 
+CORS(app)
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -34,11 +34,12 @@ def handle_call_request():
                 action="/call",
                 method="POST"
             )
-            gather.say("Hello, I am Zia. Please enter your passkey.")
+            gather.say("Hello, I am Zia AI Call Assistant for you . Please enter your passkey.")
             return str(response)
 
         # Process the user's input
-        response = handle_call_logic(user_input)
+        response = handle_call_logic(user_input,data['Caller'])
+        
         return response
     except Exception as e:
         logging.error(f"Error handling call: {str(e)}")
@@ -112,3 +113,6 @@ if __name__ == '__main__':
         app.run(debug=True, host="0.0.0.0", port=5000)
     except Exception as e:
         logging.error(f"Error starting the Flask app: {str(e)}")
+
+
+

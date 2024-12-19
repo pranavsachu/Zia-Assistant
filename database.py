@@ -20,7 +20,7 @@ def create_tables():
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 passkey TEXT UNIQUE NOT NULL,
                 name TEXT NOT NULL,
-                phone TEXT UNIQUE NOT NULL,
+                phone TEXT NOT NULL,
                 age INTEGER NOT NULL,
                 blood_group TEXT NOT NULL,
                 cholesterol_level FLOAT NOT NULL,

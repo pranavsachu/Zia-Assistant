@@ -6,7 +6,7 @@ import database
 # Initialize Twilio client
 client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
-def handle_call_logic(user_input):
+def handle_call_logic(user_input, user_phone):
     """
     Handle incoming calls, verify the passkey, and respond with the user's medical history.
 
@@ -32,6 +32,11 @@ def handle_call_logic(user_input):
             print(f"user_data: {user}")
             #(name, phone, passkey, age, blood_group, cholesterol_level, sugar_level, accident_history, surgery_history)
             response.say(f"Hello {user['name']}. Here are your updated details: phone: {user['phone']}, age: {user['age']}, blood group: {user['blood_group']}, cholesterol level: {user['cholesterol_level']}, sugar level: {user['sugar_level']}, accident history: {user['accident_history']}, surgery history: {user['surgery_history']}")
+            if user["phone"]:
+                # Send a message to the user's phone number
+                msg_response=send_message(user_phone, "You have an appointment scheduled for 2024-12-20. Please be on time.")
+                print(msg_response)
+                
         else:
             response.say("Invalid passkey. Please try again.")
     except Exception as e:
